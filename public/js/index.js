@@ -11,3 +11,11 @@ socket.on(`disconnect`, function () {
 socket.on(`newMessage`, function (message) {
   console.log("Message:", message);
 });
+
+socket.on(`connectionMessage`, function (message) {
+  console.log("Message:", message);
+});
+
+socket.on(`userConnectionMessage`, function (message) {
+  console.log("Message:", message);
+});
