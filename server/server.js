@@ -12,30 +12,18 @@ var io = socketIO(server);
 io.on('connection', (socket) => {
   console.log(`New user connected`);
 
-  socket.emit(`newEmail`, {
-    from: 'adrian@go.com',
-    text: 'Cornholio',
-    createdAt: 123
-  });
-
-  socket.emit(`newMessage`, {
-    from: 'Adrian',
-    text: 'wya?',
-    createdAt: 123
-  });
-
-  socket.on(`createEmail`, (newEmail) => {
-    console.log(`createEmail`, newEmail);
+  socket.on(`createMessage`, (message) => {
+    console.log(`Message: ${message}`);
+    io.emit('newMessage', {
+      from: message.from,
+      text: message.text,
+      createdAt: new Date().getTime()
+    });
   });
 
   socket.on(`disconnect`, () => {
     console.log(`Disconnected from client`);
   });
-
-  socket.on(`createMessage`, (message) => {
-    console.log(`From: ${message.from}`);
-    console.log(`text: ${message.text}`);
-  })
 });
 
 app.use(express.static(publicPath));
