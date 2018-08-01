@@ -13,3 +13,9 @@ describe('generateMessage', () => {
     expect(mesObj.text).toBe('Cornholio');
   });
 });
+
+describe('generateLocationMessage', () => {
+  it('Should generate a message with a location', () => {
+
+  });
+});
